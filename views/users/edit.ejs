@@ -1,0 +1,43 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href="/css/new.css">
+<body>
+    <main>
+        <div>
+            <h3>Edit Profile</h3>
+        </div>
+        <div class="form">
+            <h3><%= user.name %></h3>
+            <ul style="list-style: none;">
+                <li>Name: <%= user.name %></li>
+                <li>email: <%=user.email%></li>
+            </ul>
+
+            <form action="/posts" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Profile Image</label><br>
+                    <input type="file" name="avatarUrl" value="<%= user.avatarUrl %>" placeholder="Choose a file"/>
+                </div>
+            </form>
+            <form action="/users/<%= user._id %>?_method=PUT" method="POST">
+                <div class="form-group">
+                    <label for="username">Username</label><br>
+                    <input type="text" name="username" value="<%= user.username %>" />
+                </div>
+                <div class="form-group">
+                    <label for="bio">Bio</label><br>
+                    <textarea type="text" name="bio" placeholder="Add a caption!"><%= user.bio %></textarea>
+                </div>
+                <div class="btn-container">
+                    <input class="submit-btn" type="submit" value="Save" />
+                    <a href="/users/<%=user._id%>">Cancel</a>
+                </div>
+            </form>
+        
+            <form action="/users/<%= user._id %>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete Account" />
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+<%- include("../partials/header") %>
+<a href="/users/new">Create Account</a>
+<h3>All Users</h3>
+    <ul>
+        <% users.forEach(user => { %>
+        <li><a href="/users/<%=user._id%>"><%= user.name %></a></li>    
+    <% }) %>
+</ul>
+</body>
+</html>

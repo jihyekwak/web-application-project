@@ -1,0 +1,36 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+}
+
+.form-group {
+    margin: 10px;
+}
+
+.form-group input {
+    height: 20px;
+    width: 400px;
+    border: 1px solid black;
+    margin: 5px 0;
+}
+
+.form-group textarea {
+    height: 300px;
+    width: 400px;
+    
+}
+
+.btn-container {
+    margin: 40px 0;
+    text-align: center;
+}
+
+.btn-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.hidden {
+    display: none;
+}

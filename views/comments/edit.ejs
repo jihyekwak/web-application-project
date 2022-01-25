@@ -1,0 +1,51 @@
+<%- include("../partials/header") %>
+
+<main class="posts-show">
+	<div class="post-body">
+		
+	
+		<div class="post-desc comments">
+			<div class= "post-img">
+				<img src="http://localhost:4000/<%= post.image%>" alt="<%= post.caption %>">
+			</div>
+			<ul style="list-style: none;">
+				<li>Caption: <%= post.caption %></li>
+				<li>#Tag: <%= post.tag.name %></li>
+				<li>Author: <%= post.user.name %></li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- edit, delete button (author only can see) need more work -->
+
+	<div class="comments">
+		<% if (post.comments.length) { %>
+			<% post.comments.forEach(comment => { %>
+				<p><span><%= comment.user %>: <%= comment.content %></span></p>
+		
+
+			<% }); %>
+		<% } %>
+	
+
+
+
+	<% if (post.comments.length) { %>
+		<% post.comments.forEach(comment => { %>
+		
+			<%if (`${foundComment._id}` === `${comment._id}`) {%>
+				<form action="/comments/<%= comment._id %>?_method=PUT" method="POST">
+					<label for="content">Comment: </label>
+					<input type="text" name="content" value="<%= foundComment.content %>" />
+					<input type="submit" value="Update" />
+				</form>
+				<form action="/comments/<%= comment._id %>?_method=DELETE" method="POST">
+					<input type="submit" value="Delete Comment" />
+				</form>
+			<%} else {%>
+				<p> <%= comment.content %></p>
+			<%}%>		
+		<% }); %>
+	<% } %>
+</body>
+</html>

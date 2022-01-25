@@ -1,0 +1,28 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href="/css/posts.css">
+<body>
+
+    <div class="posts-flex-container">
+        <nav class="tag-nav">
+            <ul style="list-style: none;">
+                <% tags.forEach(tag => {%>
+                    <li>
+                        <a href="tags/<%=tag._id%>"><%=tag.name%></a>
+                    </li>
+                    <%})%>
+            </ul>
+        </nav>
+        <main class="posts-index">
+            <% posts.forEach(post => { %>
+                <a class="index-post-grid" href="posts/<%=post._id%>">
+                    <div class="index-post-img" style="background-image: url('<%= post.image %>');">
+                        <!-- <div class="overlay">
+                            <%=post.title%>
+                        </div> -->
+                    </div>
+                </a>
+            <% }); %>
+        </main>
+</div>
+
+<%- include("../partials/footer") %>

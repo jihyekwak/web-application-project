@@ -1,0 +1,30 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href="/css/posts.css">
+<body>
+
+    <div class="posts-flex-container">
+        <nav class="tag-nav">
+            <ul style="list-style: none;">
+                <% tags.forEach(tag => {%>
+                    <%if (`${tag._id}` === `${foundtag._id}`) {%>
+                        <li><a href="/tags/<%=tag._id%>"><strong><%=tag.name%></strong></a></li></strong>
+                    <%} else {%>
+                        <li><a href="/tags/<%=tag._id%>"><%=tag.name%></a></li>
+                    <%}%>
+                <%})%>
+            </ul>
+        </nav>    
+        <main class="posts-index">
+        <% foundtag.posts.forEach(post => { %>
+            <a class="index-post-grid" href="/posts/<%=post._id%>">
+                <div class="index-post-img" style="background-image:url('/<%= post.image %>')";>
+                    <div>
+                        <%=post.title%>
+                    </div>
+                </div>
+            </a>
+        <% }); %>
+        </main>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="/css/header.css">
+<script src="https://kit.fontawesome.com/080f0379a0.js" crossorigin="anonymous"></script>
+<title>Project Two</title>
+</head>
+
+<body>
+    <header>   
+        <nav class="top-nav">
+            <a class="webLogo" href="/posts"><h1>Foodgram</h1></a>
+            <div class="searchBar">
+                <input type="text" placeholder="search">
+                <button class="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="profile">
+
+                <% if (loginUser) { %>   
+                    <div class="dropdown">
+                        <button class="dropBtn">
+                        <i class="fas fa-user-circle" style="font-size:20px;margin:3px;"></i>
+                        Hi, <%= loginUser.name %>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="/users/<%= loginUser._id %>">My Page</a>
+                            <a href="/users/<%=loginUser._id%>/edit">Setting</a>
+                            <a href="/logout">LogOut</a>
+                        </div>
+                    </div>
+
+                <% } else { %>
+                        <i class="fas fa-user-circle" style="font-size:20px;margin:3px;"></i>
+                        Hi, Guest!
+                        <a href="/">Login</a>
+                        <% } %> 
+            </div>
+        </nav>
+    </header>

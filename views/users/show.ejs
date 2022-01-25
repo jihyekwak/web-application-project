@@ -1,0 +1,36 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href="/css/mypage.css">
+
+<body>
+    <div class="my-page-flex-container">
+        <!-- <img src="/<%= user.avatarUrl%>" alt="" width="50px"; height="50px";> -->
+        <div class="my-page-top">
+            <div class="my-page-nav">
+                <div class="profile">
+                    <h3><%= user.name %></h3>
+                    <a href="/users/<%=user._id%>/edit">Edit Profile</a>
+                </div>
+                <div class="add-btn">
+                    <a href="/posts/new">+ Add a Post</a> 
+                </div>  
+            </div>
+            <p><%= user.bio %></p>
+        </div>
+
+        <main class="posts-index">
+        <% user.posts.forEach(post => { %>
+            <a class="index-post-grid" href="/posts/<%=post._id%>">
+                <div class="index-post-img" style="background-image: url('/<%= post.image %>');">
+                    <div>
+                        <%=post.title%>
+                    </div>
+                </div>
+            </a>
+        <% }); %>
+    </main>
+</div>
+
+</body>
+</html>
+
+

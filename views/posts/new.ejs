@@ -1,0 +1,50 @@
+<%- include("../partials/header") %>
+<link rel="stylesheet" href="/css/new.css">
+<body>
+    <main>
+        <div>
+            <h3>New Post</h3>
+        </div>
+        <div class="form">
+            <form action="/posts" method="POST" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label>Image</label><br>
+                    <input type="file" name="image" placeholder="Choose a file" />
+                </div>
+                <div class="form-group">
+                    <label>Title</label><br>
+                    <input type="text" name="title" placeholder="Add a title"></input>
+                </div>
+                <div class="form-group">
+                    <label>Caption</label><br>
+                    <textarea type="text" name="caption" placeholder="Add a caption!"><%=post.caption%></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Tag Select</label>
+                    <select name="tag">
+                        <option value="test">tag</option>
+                        <% tags.forEach ( tag => { %>
+                        <option value="<%= tag._id %>"><%= tag.name %></option>
+                        <% }) %>
+                    </select>
+                    <span>New tag? <a href="/tags">+ Add Tag</a></span>
+                </div>
+                <div class="form-group hidden">
+                    <label>Author</label>
+                    <select name="user">
+                    <% users.forEach ( user => { %>
+                        <% if ( user === loginUser ) { %>
+                        <option value="<%= user._id %>"><%= loginUser.name %></option>
+                        <%}%>
+                    <% }) %>
+                    </select>
+                </div>
+                <div class="btn-container">
+                    <input type="submit" value="Save">
+                    <a href="/posts">Cancel</a>
+                </div>            
+            </form>
+        </div>
+    </main>
+</body>
+</html>
